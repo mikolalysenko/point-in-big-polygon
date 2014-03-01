@@ -1,0 +1,42 @@
+{
+  "name": "point-in-big-polygon",
+  "version": "0.0.0",
+  "description": "Industrial strength point in polygon test",
+  "main": "pnp-big.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "robust-orientation": "^1.0.0",
+    "slab-decomposition": "^0.0.0"
+  },
+  "devDependencies": {
+    "tape": "~2.5.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikolalysenko/point-in-big-polygon.git"
+  },
+  "keywords": [
+    "point",
+    "in",
+    "big",
+    "polygon",
+    "robust",
+    "exact",
+    "fast",
+    "scalable",
+    "2d",
+    "classify",
+    "orient"
+  ],
+  "author": "Mikola Lysenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikolalysenko/point-in-big-polygon/issues"
+  },
+  "homepage": "https://github.com/mikolalysenko/point-in-big-polygon"
+}
