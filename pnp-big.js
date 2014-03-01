@@ -42,11 +42,12 @@ function preprocessPolygon(loops, orientation) {
 
   //Unpack segments
   var segments = new Array(numSegments)
+  var ptr = 0
   for(var i=0; i<numLoops; ++i) {
     var loop = loops[i]
     var numVertices = loop.length
     for(var s=numVertices-1,t=0; t<numVertices; s=(t++)) {
-      segments.push([loop[s], loop[t]])
+      segments[ptr++] = [loop[s], loop[t]]
     }
   }
 

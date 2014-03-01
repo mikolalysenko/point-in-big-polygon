@@ -43,9 +43,9 @@ This function is the result of running the preprocessing operation on a polygon.
 
 **Returns** A signed floating point value which classifies `p` relative to the boundary
 
-* `>0` means that `p` is outside
+* `<0` means that `p` is outside
 * `=0` means that `p` is on the boundary
-* `<0` means that `p` is inside
+* `>0` means that `p` is inside
 
 # Credits
 (c) 2014 Mikola Lysenko. MIT License
