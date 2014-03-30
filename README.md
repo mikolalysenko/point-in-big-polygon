@@ -2,6 +2,8 @@ point-in-big-polygon
 ====================
 Industrial scale point-in-polygon test. Given a polygon, this module preprocesses it in O(n log(n)) time such that any point can be classified against the polygon in O(log(n)) operations. All computations are performed in exact arithmetic.
 
+If you want to use multiple polygons/regions, you should use [point-in-region](https://github.com/mikolalysenko/point-in-region) instead.
+
 # Example
 
 ```javascript
