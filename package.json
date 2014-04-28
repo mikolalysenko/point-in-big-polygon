@@ -1,13 +1,13 @@
 {
   "name": "point-in-big-polygon",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Industrial strength point in polygon test",
   "main": "pnp-big.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "robust-orientation": "^1.0.0",
+    "robust-orientation": "^1.0.2",
     "slab-decomposition": "^1.0.1"
   },
   "devDependencies": {
