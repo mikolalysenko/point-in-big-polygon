@@ -8,17 +8,68 @@ If you want to use multiple polygons/regions, you should use [point-in-region](h
 
 ```javascript
 var preprocessPolygon = require("point-in-big-polygon")
-var classifyPoint = preprocessPolygon([
+
+//Define the polygon loops
+var loops = [
   [ [-10, -10], [-10, 10], [10, 10], [10, -10] ],
   [ [-1, -1], [1, -1], [1, 1], [-1, 1] ]
-])
+]
 
-console.log(classifyPoint([0, 0]))
-console.log(classifyPoint([5, 2]))
-console.log(classifyPoint([1, 0]))
+//Preprocess it
+var classifyPoint = preprocessPolygon(loops)
+
+//Render polygon test in ASCII to console
+var img = []
+for(var y=-12; y<=12; y+=1) {
+  var row = []
+  for(var x=-12; x<=12; x+=0.5) {
+    var v = classifyPoint([x, y])
+    if(v < 0) {
+      row.push('-')
+    } else if(v === 0) {
+      row.push('o')
+    } else {
+      row.push('+')
+    }
+  }
+  img.push(row.join(''))
+}
+console.log(img.join('\n'))
+```
+
+Example output:
+
+```
++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++
+++++ooooooooooooooooooooooooooooooooooooooooo++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o-----------------ooooo-----------------o++++
+++++o-----------------o+++o-----------------o++++
+++++o-----------------ooooo-----------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++o---------------------------------------o++++
+++++ooooooooooooooooooooooooooooooooooooooooo++++
++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
 
 # Install
+
+This module works in any reasonable CommonJS environment including browserify, iojs and node.js.
 
 ```
 npm install point-in-big-polygon
@@ -28,11 +79,10 @@ npm install point-in-big-polygon
 
 ## Constructor
 
-### `var classifyPoint = require("point-in-big-polygon")(loops[,clockwise])`
-Preprocess a polygon given by a collection of oriented loops to handle point membership queries.
+### `var classifyPoint = require("point-in-big-polygon")(loops)`
+Preprocess a polygon given by a collection of clockwise oriented loops to handle point membership queries.
 
 * `loops` are a collection of oriented loops representing the boundary of the polygon. These loops must be manifold (ie no self intersections or dangling edges).
-* `clockwise` is an optional parameter, which if set changes the sign of the classification function.
 
 **Returns** A point membership function that can be used to classify points relative to the function
 
@@ -43,11 +93,11 @@ This function is the result of running the preprocessing operation on a polygon.
 
 * `p` is a point encoded as a length 2 array
 
-**Returns** A signed floating point value which classifies `p` relative to the boundary
+**Returns** A number which classifies `p` relative to the boundary
 
-* `<0` means that `p` is outside
-* `=0` means that `p` is on the boundary
-* `>0` means that `p` is inside
+* `-1` means that `p` is inside
+* `0` means that `p` is on the boundary
+* `+1` means that `p` is outside
 
 # Credits
 (c) 2014 Mikola Lysenko. MIT License
