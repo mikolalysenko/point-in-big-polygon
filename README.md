@@ -7,7 +7,7 @@ If you want to use multiple polygons/regions, you should use [point-in-region](h
 # Example
 
 ```javascript
-var preprocessPolygon = require("point-in-big-polygon")
+var preprocessPolygon = require('point-in-big-polygon')
 
 //Define the polygon loops
 var loops = [
