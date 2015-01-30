@@ -9,13 +9,13 @@
   "dependencies": {
     "binary-search-bounds": "^1.0.0",
     "interval-tree-1d": "^1.0.1",
-    "robust-orientation": "^1.0.2",
+    "robust-orientation": "^1.1.3",
     "slab-decomposition": "^1.0.1"
   },
   "devDependencies": {
     "tape": "~2.5.0",
     "signum": "0.0.0",
-    "robust-point-in-polygon": "0.0.0"
+    "robust-point-in-polygon": "^1.0.3"
   },
   "scripts": {
     "test": "tape test/*.js"

@@ -1,6 +1,6 @@
 module.exports = preprocessPolygon
 
-var orient = require('robust-orientation')
+var orient = require('robust-orientation')[3]
 var makeSlabs = require('slab-decomposition')
 var makeIntervalTree = require('interval-tree-1d')
 var bsearch = require('binary-search-bounds')

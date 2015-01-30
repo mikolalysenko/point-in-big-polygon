@@ -7,6 +7,15 @@ var sgn = require("signum")
 
 tape("point-in-big-polygon", function(t) {
 
+  var pp0 = preprocessPolygon([
+    [ [1, 2], [2, 2], [2, 1] ]
+  ], true)
+
+  t.ok(pp0([2,0]) > 0)
+  t.ok(pp0([1.75,1.75]) < 0)
+  t.ok(pp0([1,1]) > 0)
+  t.ok(pp0([1.5,1.5]) === 0)
+  
   var classifyPoint = preprocessPolygon([
     [ [-11, -10], [-10, 10], [10, 10], [10, -10] ],
     [ [-1, -1], [1, -1], [1, 1], [-1, 1] ]
@@ -16,7 +25,6 @@ tape("point-in-big-polygon", function(t) {
   t.ok(classifyPoint([5, 2]) < 0)
   t.ok(classifyPoint([1, 0]) == 0)
   t.ok(classifyPoint([-1000, 0]) > 0)
-
 
   function xform(pt, d) {
     switch(d) {
@@ -36,11 +44,10 @@ tape("point-in-big-polygon", function(t) {
       var polygon = npolygon.map(function(pt) {
         return xform(pt, d)
       })
-      console.log(polygon)
       var pmc = preprocessPolygon([polygon])
       for(var i=0; i<points.length; ++i) {
         var pt = xform(points[i], d)
-        t.equals(sgn(pmc(pt)), -sgn(rpnp(polygon, pt)))
+        t.equals(pmc(pt), rpnp(polygon, pt), 'd=' + d + '; pt=' + pt.join())
       }
     }
   }
@@ -61,12 +68,12 @@ tape("point-in-big-polygon", function(t) {
       [0, 0.5],
       [1, 0.5],
       [0.5, 1],
+      [0.25, 0.75],
       [0.5, 0.5],
       [10, 10],
       [-1, -1],
       [0.5, -1]      
     ])
-
 
   function testCircle(n) {
     var loop = new Array(n)
@@ -87,6 +94,7 @@ tape("point-in-big-polygon", function(t) {
 
   testCircle(10)
   testCircle(100)
+  
 
   t.end()
 })

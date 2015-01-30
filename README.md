@@ -79,7 +79,7 @@ npm install point-in-big-polygon
 
 ## Constructor
 
-### `var classifyPoint = require("point-in-big-polygon")(loops)`
+#### `var classifyPoint = require("point-in-big-polygon")(loops)`
 Preprocess a polygon given by a collection of clockwise oriented loops to handle point membership queries.
 
 * `loops` are a collection of oriented loops representing the boundary of the polygon. These loops must be manifold (ie no self intersections or dangling edges).
@@ -88,7 +88,7 @@ Preprocess a polygon given by a collection of clockwise oriented loops to handle
 
 ## Method
 
-### `classifyPoint(p)`
+#### `classifyPoint(p)`
 This function is the result of running the preprocessing operation on a polygon. It takes a single point as input and tests it against the boundary.
 
 * `p` is a point encoded as a length 2 array
