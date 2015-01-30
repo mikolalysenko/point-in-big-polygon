@@ -1,6 +1,6 @@
 {
   "name": "point-in-big-polygon",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Industrial strength point in polygon test",
   "main": "pnp-big.js",
   "directories": {
